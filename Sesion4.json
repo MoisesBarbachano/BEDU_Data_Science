@@ -1,0 +1,61 @@
+{
+  "_RETO1_": {
+    "_Ejercicio1_": {
+      "project": {
+        "date": 1,
+        "name": 1,
+        "text": 1
+      }
+    },
+    "_Ejercicio2_": {
+      "project": {
+       "title": 1,
+       "cast": 1,
+       "year": 1
+      }
+    },
+    "_Ejercicio3_": {
+      "project": {
+       "name": 1,
+       "email": 1
+      }
+    }
+  },
+  "_RETO2_": {
+    "_Ejercicio1_": {
+      "filter": {
+       "name": "Greg Powell"
+      }
+     },
+    "_Ejercicio2_": {
+      "filter": {
+       "$or": [
+        {
+         "name": "Greg Powell"
+        },
+        {
+         "name": "Mercedes Tyler"
+        }
+       ]
+      }
+    },
+    "_Ejercicio3_": {
+      "project": {
+       "num_mflix_comments": 1
+      },
+      "sort": {
+       "num_mflix_comments": -1
+      },
+      "limit": 1
+    },
+    "_Ejercicio4_": {
+      "project": {
+       "title": 1
+      },
+      "sort": {
+       "num_mflix_comments": -1
+      },
+      "limit": 5
+    }
+  }
+}
