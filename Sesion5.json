@@ -1,0 +1,89 @@
+{
+  "_RETO1_": {
+    "_Ejercicio1_": {
+      "filter": {
+       "house_rules": "RegExp('No parties', i)"
+      }
+    },
+    "_Ejercicio2_": {
+      "filter": {
+       "$and": [
+        {
+         "house_rules": "RegExp('Pets allowed', i)"
+        },
+        {
+         "house_rules": {
+          "$not": "RegExp('No pets', i)"
+         }
+        }
+       ]
+      }
+    },
+    "_Ejercicio3_": {
+      "filter": {
+       "house_rules": {
+        "$in": [
+         "RegExp('No smoke', i)",
+         "RegExp('No smoking', i)"
+        ]
+       }
+      }
+    },
+    "_Ejercicio4_": {
+      "filter": {
+       "house_rules": {
+        "$in": [
+         "RegExp('No smoke', i)",
+         "RegExp('No smoking', i)",
+         "RegExp('No parties', i)"
+        ]
+       }
+      }
+    }
+  },
+  "_RETO2_": {
+    "_Ejercicio1_": {
+      "filter": {
+       "$and": [
+        {
+         "number_of_reviews": {
+          "$gte": 50
+         }
+        },
+        {
+         "review_scores.review_scores_rating": {
+          "$gte": 80
+         }
+        },
+        {
+         "amenities": {
+          "$in": [
+           "RegExp('Ethernet', i)"
+          ]
+         }
+        },
+        {
+         "address.country": "RegExp('Brazil', i)"
+        }
+       ]
+      }
+    }
+  },
+  "_RETO3_": {
+    "_Ejercicio1_":{
+      "$match": {
+        "amenities": {
+          "$in": [
+            "RegExp('Ethernet', 'i')", "RegExp('Wifi', 'i')"
+          ]
+        }
+      },
+      "$group": {
+        "_id": null, 
+        "total": {
+          "$sum": 1
+        }
+      }
+    }
+  }
+}
