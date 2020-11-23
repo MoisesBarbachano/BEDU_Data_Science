@@ -1,0 +1,65 @@
+{
+	"reto1": [
+		{
+			"$match": {
+				"property_type": "House",
+				"bedrooms": {
+					"$gte": 1
+				}
+			}
+		},
+		{
+			"$addFields": {
+				"cost_by_bedroom": {
+					"$divide": [
+						"$price",
+						"$bedrooms"
+					]
+				}
+			}
+		},
+		{
+			"$group": {
+				"_id": "$address.country",
+				"avg_bedroom": {
+					"$avg": "$cost_by_bedroom"
+				}
+			}
+		}
+	],
+	"reto2": [
+		{
+			"$lookup": {
+				"from": "users",
+				"localField": "email",
+				"foreignField": "email",
+				"as": "info_usuario"
+			}
+		},
+		{
+			"$addFields": {
+				"user_object": {
+					"$arrayElemAt": [
+						"$info_usuario",
+						0
+					]
+				}
+			}
+		},
+		{
+			"$addFields": {
+				"email_user": "$user_object.email",
+				"password_user": "$user_object.password"
+			}
+		},
+		{
+			"$project": {
+				"_id": 0,
+				"name": 1,
+				"email_user": 1,
+				"password_user": 1,
+				"text": 1
+			}
+		}
+	]
+}
